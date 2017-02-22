@@ -13,6 +13,12 @@ public class TokenServiceImpl implements TokenService{
 	}
 	
 	@Override
+	public boolean validateToekn(String tokenId) {
+		this.updateTokenLastAccessTime(tokenId);
+		return true;
+	}
+	
+	@Override
 	public void updateTokenLastAccessTime(String tokenId) {
 		// TODO Auto-generated method stub
 		
