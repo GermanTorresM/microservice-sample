@@ -10,7 +10,7 @@ import com.metamagic.common.bean.MessageWrapper;
 import com.metamagic.service.TokenService;
 
 @RestController
-@RequestMapping("/tokenservice")
+//@RequestMapping("/tokenservice")
 public class TokenController {
 
 	@Autowired
@@ -18,8 +18,13 @@ public class TokenController {
 	
 	@RequestMapping(value ="/generatetoken/{data}", method=RequestMethod.GET, produces="application/json")
 	public MessageWrapper<String> generateToken(@PathVariable String data){
-		
 		String tokenId = tokenService.generateToken(data); 
 		return new MessageWrapper<String>(tokenId, true, "Token generated ", "tokenservice.generate.success.01");
+	}
+	
+	@RequestMapping(value="/validateToken/{tokenId}", method=RequestMethod.GET, produces="application/json")
+	public MessageWrapper<Boolean> validateToken(@PathVariable String tokenId){
+		Boolean tokenStatus = tokenService.validateToekn(tokenId);
+		return new MessageWrapper<Boolean>(tokenStatus,true,"Token validated","tokenservice.valid.success.01");
 	}
 }
