@@ -1,0 +1,5 @@
+curl -H "Content-Type: application/json" -X POST -d '{"loginId":"xyz","password":"xyssssz"}' http://localhost:1114/api/auth-service/login/authenticate
+
+
+curl -H "Content-Type: application/json" -X POST -d '{"loginId":"xyz","password":"xyz"}' http://localhost:1114/api/auth-service/login/authenticate
+
