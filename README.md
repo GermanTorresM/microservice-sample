@@ -108,19 +108,17 @@ Besides circuit breaker control, with Hystrix you can add a fallback method that
 
 Feign is a declarative Http client, which seamlessly integrates with Ribbon and Hystrix. Actually, with one spring-cloud-starter-feign dependency and @EnableFeignClients annotation you have a full set of Load balancer, Circuit breaker and Http client with sensible ready-to-go default configuration.
 
-public interface LoginService {
+public interface LoginService {<br/>
+	@RequestMapping(value="/authenticate", method=RequestMethod.POST, produces="application/json")<br/>
+	public MessageWrapper<Object> authenticate(@RequestBody Object loginBean);<br/>
+}<br/>
 
-	@RequestMapping(value="/authenticate", method=RequestMethod.POST, produces="application/json")
-	public MessageWrapper<Object> authenticate(@RequestBody Object loginBean);
-}
+@FeignClient(value="login-service", fallback=LoginServiceFallBack.class)<br/>
+public interface LoginServiceClient extends LoginService<br/>
+{<br/>
+}<br/>
 
-@FeignClient(value="login-service", fallback=LoginServiceFallBack.class)
-public interface LoginServiceClient extends LoginService
-{
-
-}
-
-NOTE: PLEASE LOOK INTO AUTH-CLIENT PROJECT FOR FEIGN
+NOTE: PLEASE LOOK INTO AUTH-CLIENT PROJECT FOR FEIGN<br/>
 
 
 <hr>
