@@ -44,30 +44,17 @@ It can be used for authentication, insights, stress and canary testing, service 
 
 <b>With Spring Cloud we can enable it with one @EnableZuulProxy annotation</b>
 
-
 @EnableZuulProxy
 public class Config {
 }
 
-<b>Route requests to appropriate microservices, defined in application.properties</b>
+<b>Route requests to appropriate microservices, defined in application.properties</b> 
 
-spring.application.name=edge-server
-server.port=1114
-eureka.instance.prefer-ip-address=true
-eureka.instance.leaseRenewalIntervalInSeconds=10
-eureka.instance.metadataMap.instanceId=${vcap.application.instance_id:${spring.application.name}:${spring:application:instance_id:${server.port}}}
-eureka.client.serviceUrl.defaultZone=http://127.0.0.1:1111/eureka/  
 zuul.prefix=/api
 zuul.ignoredServices='*'
 zuul.routes.auth-service.path=/auth-service/**
 zuul.routes.auth-service.serviceId=AUTH-SERVICE
 zuul.ribbon.restclient.enabled=true
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=60000
-
-Sample examples is build using Spring Cloud API, Showcasing <br/>
-1 - Configure Eureka server, eureka-server project.<br/>
-2 - Build service and register to Eureka, login-service/token-service project.<br/>
-3 - Client load balancer using Ribbon and Feign, FallBack, auth-client project. Using eureka discouvery how client communicates to end service.<br/>
-4 - Configure edge-server(zuul), edge-server. Using Zuul we can forward particular request to Client load balancer.<br/>
 
 
