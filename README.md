@@ -112,9 +112,8 @@ Once you download code and its setup in standard ID starts the application in fo
 
 1 - Eureka Server - You might get error at console saying replica server is not configure, we can ignore for development purpose.<br/>
 2 - Login Service<br/>
-3 - Token Service<br/>
-4 - Auth Client<br/>
-5 - Edge Server<br/>
+3 - Auth Client<br/>
+4 - Edge Server<br/>
 
 Use following curl command to test<br/>
 
