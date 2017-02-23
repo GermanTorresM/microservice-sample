@@ -8,11 +8,10 @@ Decomposed into two core microservices. All of them are independently deployable
 
 #### Login service
 
-<b>1 - Authenicate </b>
-Method: Post
-Path : /authenticate
-Description: Validate userid password.
-Curl Command: curl -H "Content-Type: application/json" -X POST -d '{"loginId":"xyz","password":"xyz"}' http://localhost:1112/loginservice/authenticate
+Method: Post<br/>
+Path : /authenticate<br/>
+Description: Validate userid password.<br/>
+Curl Command: curl -H "Content-Type: application/json" -X POST -d '{"loginId":"xyz","password":"xyz"}' http://localhost:1112/loginservice/authenticate<br/>
 
 
 
