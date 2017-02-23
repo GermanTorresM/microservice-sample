@@ -1,5 +1,21 @@
 # microservice-sample
 
+This is a proof-of-concept application, which demonstrates [Microservice Architecture Pattern](http://martinfowler.com/microservices/) using Spring Boot, Spring Cloud, Spring Config.
+
+## Functional services
+
+Decomposed into two core microservices. All of them are independently deployable applications, organized around certain business capability.
+
+#### Login service
+
+<b>1 - Authenicate </b>
+Method: Post
+Path : /authenticate
+Description: Validate userid password.
+Curl Command: curl -H "Content-Type: application/json" -X POST -d '{"loginId":"xyz","password":"xyz"}' http://localhost:1112/loginservice/authenticate
+
+
+
 Sample examples is build using Spring Cloud API, Showcasing <br/>
 1 - Configure Eureka server, eureka-server project.<br/>
 2 - Build service and register to Eureka, login-service/token-service project.<br/>
