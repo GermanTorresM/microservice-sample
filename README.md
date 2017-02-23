@@ -122,3 +122,30 @@ NOTE: PLEASE LOOK INTO AUTH-CLIENT PROJECT FOR FEIGN<br/>
 
 
 <hr>
+
+## Notes
+Once you download code and its setup in standard ID starts the application in following sequence.
+
+1 - Eureka Server - You might get error at console saying replica server is not configure, we can ignore for development purpose.<br/>
+2 - Login Service<br/>
+3 - Token Service<br/>
+4 - Auth Client<br/>
+5 - Edge Server<br/>
+
+Use following curl command to test<br/>
+
+curl -H "Content-Type: application/json" -X POST -d '{"loginId":"xyz","password":"xyssssz"}' http://localhost:1114/api/auth-service/login/authenticate<br/>
+
+curl -H "Content-Type: application/json" -X POST -d '{"loginId":"xyz","password":"xyz"}' http://localhost:1114/api/auth-service/login/authenticate<br/>
+
+curl -H "Content-Type: application/json" -X GET http://localhost:1114/api/auth-service/token/validateToken/authenticate<br/>
+
+If you want to check FALLBACK mechanism, stop login/token service and execute above commands again.<br/>
+
+Once fallback scenario is tested start the login/token service and execute above commands. Wait for 1 Minute once server are started as hystrix default isolation for thread is set to 1min.
+
+<hr/>
+
+
+
+
