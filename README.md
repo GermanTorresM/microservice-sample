@@ -87,4 +87,40 @@ logging.level.com.netflix.eureka=OFF<br/>
 logging.level.com.netflix.discover=OFF<br/>
 
 Note: Detail code for eureka server can be found in eureka-server project
+
+<hr/>
+
+##Load balancer, Circuit breaker and Http client
+
+####Ribbon
+
+Ribbon is a client side load balancer which gives you a lot of control over the behaviour of HTTP and TCP clients. Compared to a traditional load balancer, there is no need in additional hop for every over-the-wire invocation - you can contact desired service directly.
+
+Out of the box, it natively integrates with Spring Cloud and Service Discovery. Eureka Client provides a dynamic list of available servers so Ribbon could balance between them.
+
+####Hystrix
+
+Hystrix is the implementation of Circuit Breaker pattern, which gives a control over latency and failure from dependencies accessed over the network. The main idea is to stop cascading failures in a distributed environment with a large number of microservices. That helps to fail fast and recover as soon as possible - important aspects of fault-tolerant systems that self-heal.
+
+Besides circuit breaker control, with Hystrix you can add a fallback method that will be called to obtain a default value in case the main command fails.
+
+####Feign
+
+Feign is a declarative Http client, which seamlessly integrates with Ribbon and Hystrix. Actually, with one spring-cloud-starter-feign dependency and @EnableFeignClients annotation you have a full set of Load balancer, Circuit breaker and Http client with sensible ready-to-go default configuration.
+
+public interface LoginService {
+
+	@RequestMapping(value="/authenticate", method=RequestMethod.POST, produces="application/json")
+	public MessageWrapper<Object> authenticate(@RequestBody Object loginBean);
+}
+
+@FeignClient(value="login-service", fallback=LoginServiceFallBack.class)
+public interface LoginServiceClient extends LoginService
+{
+
+}
+
+NOTE: PLEASE LOOK INTO AUTH-CLIENT PROJECT FOR FEIGN
+
+
 <hr>
