@@ -16,22 +16,6 @@ Curl Command: curl -H "Content-Type: application/json" -X POST -d '{"loginId":"x
 
 Note: Business logic is hard coded, If userid/password are sample its authenticated.
 
-#### Token service
-
-Method: GET<br/>
-Path : /validateToken<br/>
-Description: Validate token.<br/>
-Curl Command: curl -H "Content-Type: application/json" -X GET  http://localhost:1115/tokenservice/validateToken/tokenId<br/>
-
-Note: No Business logic applied, returns hard coded true.<br/>
-
-Method: GET<br/>
-Path : /generatetoken<br/>
-Description: Generate Token based on data.<br/>
-Curl Command: curl -H "Content-Type: application/json" -X GET  http://localhost:1115/tokenservice/generatetoken/data<br/>
-
-Note: UUID string is return as token.<br/>
-
 <hr/>
 
 ## Edge Server
@@ -137,8 +121,6 @@ Use following curl command to test<br/>
 curl -H "Content-Type: application/json" -X POST -d '{"loginId":"xyz","password":"xyssssz"}' http://localhost:1114/api/auth-service/login/authenticate<br/>
 
 curl -H "Content-Type: application/json" -X POST -d '{"loginId":"xyz","password":"xyz"}' http://localhost:1114/api/auth-service/login/authenticate<br/>
-
-curl -H "Content-Type: application/json" -X GET http://localhost:1114/api/auth-service/token/validateToken/authenticate<br/>
 
 If you want to check FALLBACK mechanism, stop login/token service and execute above commands again.<br/>
 
