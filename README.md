@@ -57,4 +57,34 @@ zuul.routes.auth-service.serviceId=AUTH-SERVICE<br/>
 zuul.ribbon.restclient.enabled=true<br/>
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=60000<br/>
 
+Note: Detail code for edge server can be found in edge-server project
+<hr>
 
+## Service Discovery
+
+The key part of Service discovery is Registry. I use Netflix Eureka in this project. Eureka is a good example of the client-side discovery pattern, when client is responsible for determining locations of available service instances (using Registry server) and load balancing requests across them.
+
+With Spring Boot, you can easily build Eureka Registry with spring-cloud-starter-eureka-server dependency, @EnableEurekaServer annotation and simple configuration properties.
+
+@EnableEurekaServer
+@SpringBootApplication
+public class EurekaServerApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(EurekaServerApplication.class, args);
+	}
+}
+
+Every service will get register to Eureka server on its starup and provide all required info like URL, Host etc.
+
+application.properties for eureka server.
+
+spring.application.name=eureka-service<br/>
+server.port=1111<br/>
+eureka.instance.client.register-with-eureka=false<br/>
+eureka.instance.client.fetch-registry=false<br/>
+logging.level.com.netflix.eureka=OFF<br/>
+logging.level.com.netflix.discover=OFF<br/>
+
+Note: Detail code for eureka server can be found in eureka-server project
+<hr>
