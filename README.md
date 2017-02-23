@@ -42,16 +42,15 @@ In theory, a client could make requests to each of the microservices directly. B
 
 It can be used for authentication, insights, stress and canary testing, service migration, static response handling, active traffic management.
 
-With Spring Cloud we can enable it with one @EnableZuulProxy annotation
+<b>With Spring Cloud we can enable it with one @EnableZuulProxy annotation</b>
 
-<b>
+
 @EnableZuulProxy
 public class Config {
 }
-</b>
-Route requests to appropriate microservices, defined in application.properties
 
-<b>
+<b>Route requests to appropriate microservices, defined in application.properties</b>
+
 spring.application.name=edge-server
 server.port=1114
 eureka.instance.prefer-ip-address=true
@@ -64,7 +63,6 @@ zuul.routes.auth-service.path=/auth-service/**
 zuul.routes.auth-service.serviceId=AUTH-SERVICE
 zuul.ribbon.restclient.enabled=true
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=60000
-</b>
 
 Sample examples is build using Spring Cloud API, Showcasing <br/>
 1 - Configure Eureka server, eureka-server project.<br/>
