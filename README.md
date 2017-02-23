@@ -50,11 +50,11 @@ public class Config {
 
 <b>Route requests to appropriate microservices, defined in application.properties</b> 
 
-zuul.prefix=/api
-zuul.ignoredServices='*'
-zuul.routes.auth-service.path=/auth-service/**
-zuul.routes.auth-service.serviceId=AUTH-SERVICE
-zuul.ribbon.restclient.enabled=true
-hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=60000
+zuul.prefix=/api<br/>
+zuul.ignoredServices='*'<br/>
+zuul.routes.auth-service.path=/auth-service/**<br/>
+zuul.routes.auth-service.serviceId=AUTH-SERVICE<br/>
+zuul.ribbon.restclient.enabled=true<br/>
+hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=60000<br/>
 
 
